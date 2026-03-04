@@ -8,22 +8,40 @@ import Image from "next/image";
 export default function AltBrands() {
     const brands = [
         {
+            name: "Black Bear Tech",
+            tagline: "Advanced Tech Solutions & Software",
+            website: "/tech",
+            color: "from-blue-500/20 to-indigo-500/5",
+        },
+        {
             name: "Bear Dynamics",
             tagline: "Next-Gen Robotics & Automation",
-            website: "https://example.com/bear-dynamics",
-            color: "from-blue-500/20 to-cyan-500/5",
+            website: "#",
+            color: "from-cyan-500/20 to-blue-500/5",
         },
         {
             name: "Ursus Security",
             tagline: "Enterprise Grade Cyber Defense",
-            website: "https://example.com/ursus-security",
+            website: "#",
             color: "from-red-500/20 to-orange-500/5",
         },
         {
             name: "Grizzly Analytics",
             tagline: "Predictive Big Data Solutions",
-            website: "https://example.com/grizzly-analytics",
+            website: "#",
             color: "from-emerald-500/20 to-teal-500/5",
+        },
+        {
+            name: "Polar Cloud",
+            tagline: "Scalable Cloud Infrastructure",
+            website: "#",
+            color: "from-sky-500/20 to-cyan-500/5",
+        },
+        {
+            name: "Kodiak Innovations",
+            tagline: "Advanced AI Research",
+            website: "#",
+            color: "from-purple-500/20 to-fuchsia-500/5",
         },
     ];
 

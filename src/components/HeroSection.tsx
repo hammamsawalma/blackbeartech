@@ -27,7 +27,7 @@ export default function HeroSection() {
                 >
                     <span className="w-2 h-2 rounded-full bg-brand-accent animate-pulse" />
                     <span className="text-sm font-medium text-brand-accent/90 tracking-wide font-space-grotesk">
-                        Advanced Tech Solutions
+                        The Black Bear Group
                     </span>
                 </motion.div>
 
@@ -37,9 +37,9 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 0.2 }}
                     className="text-5xl md:text-7xl font-bold mb-8 tracking-tight font-space-grotesk text-transparent bg-clip-text bg-gradient-to-br from-white via-white/90 to-white/50"
                 >
-                    Engineering the Future
+                    Building the Future
                     <br className="hidden md:block" />
-                    <span className="text-brand-accent"> Without Limits.</span>
+                    <span className="text-brand-accent"> Across Industries.</span>
                 </motion.h1>
 
                 <motion.p
@@ -48,7 +48,7 @@ export default function HeroSection() {
                     transition={{ duration: 0.8, delay: 0.4 }}
                     className="text-lg md:text-xl text-brand-muted mb-12 max-w-2xl mx-auto leading-relaxed"
                 >
-                    From cutting-edge AI implementations and Fintech architectures to bespoke web apps and robust hosting. We build the digital backbone for ambitious brands.
+                    A powerful ecosystem of specialized brands driving innovation across technology, automation, security, and data. We are the architects of tomorrow.
                 </motion.p>
 
                 <motion.div
