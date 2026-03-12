@@ -4,7 +4,7 @@ import TrustBar from "@/components/organisms/TrustBar";
 import CoreServices from "@/components/organisms/CoreServices";
 import DiagnosticWizard from "@/components/organisms/DiagnosticWizard";
 import AboutUs from "@/components/organisms/AboutUs";
-import AltBrands from "@/components/organisms/AltBrands";
+import Industries from "@/components/organisms/Industries";
 import ContactForm from "@/components/organisms/ContactForm";
 import Footer from "@/components/organisms/Footer";
 import PageLayout from "@/components/templates/PageLayout";
@@ -39,7 +39,7 @@ export default function Home() {
       <CoreServices />
       <DiagnosticWizard />
       <AboutUs />
-      <AltBrands />
+      <Industries />
       <div id="contact"><ContactForm /></div>
       <Footer />
     </PageLayout>

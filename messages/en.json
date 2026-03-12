@@ -72,10 +72,41 @@
     "stat2Value": "99.9%",
     "stat3Value": "24/7"
   },
-  "brands": {
-    "title": "The Black Bear Family",
-    "subtitle": "A family of specialized brands, each focused on a specific domain to deliver the best solutions.",
-    "tagline": "A Specialist for Every Need."
+  "industries": {
+    "title": "Industries We Transform",
+    "subtitle": "We build specialized technology for sectors that demand performance, security, and scale.",
+    "ecommerce": {
+      "tab": "E-Commerce",
+      "headline": "Stop losing sales to slow checkouts.",
+      "description": "We build high-conversion storefronts and custom inventory systems that handle traffic spikes without breaking a sweat.",
+      "feature1": "Lightning-fast custom storefronts",
+      "feature2": "Real-time inventory sync",
+      "feature3": "Abandoned cart automation"
+    },
+    "fintech": {
+      "tab": "FinTech",
+      "headline": "Bank-grade security. Millisecond precision.",
+      "description": "Complex financial operations require absolute reliability. We engineer secure ledgers, payment gateways, and scalable financial algorithms.",
+      "feature1": "PCI-DSS compliant infrastructure",
+      "feature2": "Secure custom payment gateways",
+      "feature3": "Automated ledger reconciliation"
+    },
+    "healthcare": {
+      "tab": "Healthcare",
+      "headline": "Systems that care for data, so you care for patients.",
+      "description": "Compliant, fast, and secure health record systems and telemedicine platforms designed for medical professionals.",
+      "feature1": "HIPAA-compliant data storage",
+      "feature2": "Custom telemedicine platforms",
+      "feature3": "Unified patient record dashboards"
+    },
+    "logistics": {
+      "tab": "Logistics & Supply",
+      "headline": "Track everything. Automate the rest.",
+      "description": "From warehouse management to real-time fleet tracking, we build systems that cut delays and reduce operational chaos.",
+      "feature1": "Real-time fleet tracking apps",
+      "feature2": "Automated warehouse management",
+      "feature3": "Predictive supply chain analytics"
+    }
   },
   "trust": {
     "clients": "+50 Clients Trust Us",

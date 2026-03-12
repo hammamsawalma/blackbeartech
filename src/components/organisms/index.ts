@@ -2,7 +2,7 @@ export { default as Navbar } from './Navbar';
 export { default as HeroSection } from './HeroSection';
 export { default as CoreServices } from './CoreServices';
 export { default as DiagnosticWizard } from './DiagnosticWizard';
-export { default as AltBrands } from './AltBrands';
+export { default as Industries } from './Industries';
 export { default as AboutUs } from './AboutUs';
 export { default as ContactForm } from './ContactForm';
 export { default as TrustBar } from './TrustBar';
