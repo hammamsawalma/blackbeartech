@@ -838,7 +838,7 @@ function Lights() {
         <>
             {/* Near-zero ambient so the dark bear only lights up from rims */}
             <ambientLight intensity={0.3} color="#ffffff" />
-            <hemisphereLight skyColor="#00D4FF" groundColor="#000000" intensity={0.2} />
+            <hemisphereLight args={["#00D4FF", "#000000", 0.2]} />
 
             {/* ── PRIMARY RIM: electric blue from far behind-right ── */}
             <spotLight
