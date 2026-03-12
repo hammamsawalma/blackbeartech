@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk, Cairo, IBM_Plex_Sans_Arabic } from "next/font/google";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import Navbar from "@/components/Navbar";
+import Navbar from "@/components/organisms/Navbar";
+import ScrollProgress from "@/components/molecules/ScrollProgress";
+import { ToastProvider } from "@/components/molecules/ToastProvider";
 import "../globals.css";
 
 const inter = Inter({
@@ -54,8 +56,16 @@ export default async function LocaleLayout({
         className={`${fontVariables} font-sans antialiased bg-bg-primary text-text-primary`}
       >
         <NextIntlClientProvider messages={messages}>
+          <a href="#main" className="skip-to-content">
+            {isRTL ? 'تخطى إلى المحتوى' : 'Skip to content'}
+          </a>
+          <ScrollProgress />
           <Navbar />
-          {children}
+          <ToastProvider>
+            <main id="main">
+              {children}
+            </main>
+          </ToastProvider>
         </NextIntlClientProvider>
       </body>
     </html>

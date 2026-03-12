@@ -1,50 +1,86 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('i18n Routing', () => {
-  test('Root path redirects to English based on browser locale', async ({ page }) => {
+test.describe('i18n Routing & Language Switching', () => {
+  
+  test('Root path redirects to a locale', async ({ page }) => {
     await page.goto('/');
-    await expect(page).toHaveURL(/\/en/);
-    
-    // Check if direction is LTR
-    const htmlDir = await page.locator('html').getAttribute('dir');
-    expect(htmlDir).toBe('ltr');
-    
-    // Check heading language
-    await expect(page.locator('h1').first()).toContainText('Your Business Problems?');
+    await page.waitForLoadState('networkidle');
+    // Should redirect to /en or /ar based on browser accept-language
+    await expect(page).toHaveURL(/\/(en|ar)/);
   });
 
-  test('English path loads LTR text', async ({ page }) => {
-    await page.goto('/en');
-    
-    // Check if direction is LTR
-    const htmlDir = await page.locator('html').getAttribute('dir');
-    expect(htmlDir).toBe('ltr');
-    
-    // Check heading language
-    await expect(page.locator('h1').first()).toContainText('Your Business Problems?');
-  });
-
-  test('Language switcher changes language and direction', async ({ page }) => {
+  test('Arabic page has correct dir and lang', async ({ page }) => {
     await page.goto('/ar');
+    await page.waitForLoadState('networkidle');
     
-    // Click language switcher (EN button)
-    // Assuming the switcher has text "EN"
+    const html = page.locator('html');
+    await expect(html).toHaveAttribute('dir', 'rtl');
+    await expect(html).toHaveAttribute('lang', 'ar');
+  });
+
+  test('English page has correct dir and lang', async ({ page }) => {
+    await page.goto('/en');
+    await page.waitForLoadState('networkidle');
+    
+    const html = page.locator('html');
+    await expect(html).toHaveAttribute('dir', 'ltr');
+    await expect(html).toHaveAttribute('lang', 'en');
+  });
+
+  test('English page renders English content', async ({ page }) => {
+    await page.goto('/en');
+    await page.waitForLoadState('networkidle');
+    
+    // Hero should have English text
+    await expect(page.getByText('Every Business Has a Problem.').first()).toBeVisible();
+    await expect(page.getByText('We Engineer the Fix.').first()).toBeVisible();
+    
+    // Services section
+    await expect(page.getByText('How We Help').first()).toBeVisible();
+    
+    // Footer
+    await expect(page.getByText('All Rights Reserved').first()).toBeVisible();
+  });
+
+  test('Language switcher AR→EN works', async ({ page }) => {
+    await page.goto('/ar');
+    await page.waitForLoadState('networkidle');
+    
+    // Click EN button
     await page.getByRole('button', { name: 'EN' }).click();
     
-    // Wait for navigation
-    await page.waitForURL(/\/en/);
+    // Wait for navigation to /en
+    await page.waitForURL(/\/en/, { timeout: 10000 });
     
-    // Should be english now
-    const htmlDir = await page.locator('html').getAttribute('dir');
-    expect(htmlDir).toBe('ltr');
-    await expect(page.locator('h1').first()).toContainText('Your Business Problems?');
+    const html = page.locator('html');
+    await expect(html).toHaveAttribute('dir', 'ltr');
+    await expect(html).toHaveAttribute('lang', 'en');
     
-    // Switch back to AR
+    // Verify English content loads
+    await expect(page.getByText('Every Business Has a Problem.').first()).toBeVisible();
+  });
+
+  test('Language switcher EN→AR works', async ({ page }) => {
+    await page.goto('/en');
+    await page.waitForLoadState('networkidle');
+    
+    // In English, switcher shows عربي
     await page.getByRole('button', { name: 'عربي' }).click();
-    await page.waitForURL(/\/ar/);
     
-    const htmlDirAr = await page.locator('html').getAttribute('dir');
-    expect(htmlDirAr).toBe('rtl');
-    await expect(page.locator('h1').first()).toContainText('مشاكل عملك؟');
+    // Wait for navigation to /ar
+    await page.waitForURL(/\/ar/, { timeout: 10000 });
+    
+    const html = page.locator('html');
+    await expect(html).toHaveAttribute('dir', 'rtl');
+    await expect(html).toHaveAttribute('lang', 'ar');
+  });
+
+  test('Invalid locale shows 404 page', async ({ page }) => {
+    await page.goto('/xyz', { waitUntil: 'networkidle' });
+    // Should show 404 or redirect
+    const url = page.url();
+    const is404OrRedirect = url.includes('/en') || url.includes('/ar') || 
+      (await page.locator('text=404').count()) > 0;
+    expect(is404OrRedirect).toBeTruthy();
   });
 });

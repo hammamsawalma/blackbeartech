@@ -5,17 +5,16 @@
   },
   "nav": {
     "home": "Home",
-    "solutions": "Solutions",
-    "stories": "Success Stories",
+    "services": "Services",
     "about": "About Us",
     "contact": "Contact",
     "cta": "Let's Solve This"
   },
   "hero": {
     "badge": "Tech Experts · Available Now",
-    "headline": "Your Business Problems?",
-    "headlineAccent": "We Build the Solution.",
-    "subtext": "Tell us what's slowing you down. We'll build the tech solution — and make it simple.",
+    "headline": "Every Business Has a Problem.",
+    "headlineAccent": "We Engineer the Fix.",
+    "subtext": "From chaos to clarity — we build the tech that runs your business while you focus on growing it.",
     "ctaPrimary": "Let's Solve This Together",
     "ctaSecondary": "Discover Our Solutions",
     "scrollHint": "Discover More"
@@ -33,32 +32,32 @@
     "title": "How We Help",
     "subtitle": "Every business problem has a tech solution. We build it — simply and clearly.",
     "ai": {
-      "title": "Smart Automation That Works For You",
-      "description": "Save hours of repetitive manual work. Smart systems that learn and improve over time."
+      "title": "Smart Automation",
+      "description": "Automate reports, invoicing, and follow-ups. Save 15+ hours every week with systems that run on autopilot."
     },
     "web": {
-      "title": "Your Business Online — Web & Apps",
-      "description": "A professional digital presence that reflects your quality and attracts customers 24/7."
+      "title": "Digital Platforms",
+      "description": "Enterprise-grade web and mobile applications that load in milliseconds and convert visitors into clients."
     },
     "saas": {
-      "title": "Software That Works From Anywhere",
-      "description": "Custom cloud software for your business, accessible from any computer, phone, or tablet."
+      "title": "Custom Cloud Software",
+      "description": "Ditch the expensive, clunky software. We build unified dashboards tailored exactly to your workflow."
     },
     "consulting": {
-      "title": "A Tech Expert for Your Digital Future",
-      "description": "Clear, simplified tech consulting that helps you make the right decisions."
+      "title": "Technical Consulting",
+      "description": "Clear answers to complex questions. We audit your infrastructure and architect scalable tech roadmaps."
     },
     "fintech": {
-      "title": "Secure Online Payments, Fast & Reliable",
-      "description": "Accept your customers' payments online safely and effortlessly."
+      "title": "Payment Integration",
+      "description": "Secure, seamless payment gateways that reduce cart abandonment and ensure fast settlements."
     },
     "support": {
-      "title": "Always-On Support — We've Got You",
-      "description": "A support team available around the clock. Your problem gets solved before it affects your business."
+      "title": "24/7 Shield Support",
+      "description": "Proactive monitoring and immediate fixes. Your systems stay online so your business never stops."
     },
     "hosting": {
-      "title": "Your Site Stays Up — Always",
-      "description": "Fast, reliable hosting that ensures your customers can find you whenever they need you."
+      "title": "Enterprise Cloud Hosting",
+      "description": "Military-grade security on blazing fast servers with 99.9% guaranteed uptime SLAs."
     }
   },
   "about": {
@@ -91,27 +90,9 @@
     "nav": "Navigation",
     "social": "Connect With Us"
   },
-  "about_page": {
-    "title": "About Us",
-    "subtitle": "We are a team of tech experts focused on solving real business problems. We don't make complex promises; we build systems that work efficiently and stably.",
-    "missionTitle": "Our Mission",
-    "missionText": "To simplify technology for business owners and empower them to grow without worrying about the tech side.",
-    "valuesTitle": "Core Values",
-    "values": {
-      "simplicity": { "title": "Simplicity", "desc": "Complex systems eventually fail. We believe in direct and easy solutions." },
-      "reliability": { "title": "Reliability", "desc": "Built to last. Sites that don't crash and systems that hold up under pressure." },
-      "partnership": { "title": "Partnership", "desc": "Your success is our success. We are an extension of your team, not just a tech contractor." }
-    }
-  },
-  "solutions_page": {
-    "title": "Our Solutions",
-    "subtitle": "Browse our range of services designed to meet your business needs step by step.",
-    "learnMore": "Learn More",
-    "contactSales": "Contact Sales"
-  },
-  "contact_page": {
-    "title": "Contact Us",
-    "subtitle": "Ready to solve your tech problems? Our team is available to answer your questions and start immediately.",
+  "contact": {
+    "title": "Ready to Build?",
+    "subtitle": "Tell us about your business challenge. We'll show you how technology can solve it.",
     "form": {
       "name": "Full Name",
       "email": "Email Address",
@@ -123,11 +104,23 @@
       "error": "An error occurred while sending. Please try again later."
     },
     "info": {
-      "title": "Contact Information",
-      "email": "Email",
-      "phone": "Phone",
-      "address": "Address",
-      "addressValue": "Saudi Arabia"
+      "title": "Direct Contact",
+      "email": "hello@blackbeartech.com",
+      "phone": "+966 50 123 4567",
+      "address": "Riyadh, Saudi Arabia"
     }
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "getStarted": "Get Started",
+    "backToHome": "Back to Home",
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try Again"
+  },
+  "404": {
+    "title": "Page Not Found",
+    "description": "Looks like this page wandered off to the woods...",
+    "cta": "Return to Basecamp"
   }
 }

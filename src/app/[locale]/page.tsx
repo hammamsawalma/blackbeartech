@@ -1,10 +1,13 @@
 import { getTranslations } from "next-intl/server";
-import HeroSection from "@/components/HeroSection";
-import TrustBar from "@/components/TrustBar";
-import CoreServices from "@/components/CoreServices";
-import DiagnosticWizard from "@/components/DiagnosticWizard";
-import AltBrands from "@/components/AltBrands";
-import Footer from "@/components/Footer";
+import HeroSection from "@/components/organisms/HeroSection";
+import TrustBar from "@/components/organisms/TrustBar";
+import CoreServices from "@/components/organisms/CoreServices";
+import DiagnosticWizard from "@/components/organisms/DiagnosticWizard";
+import AboutUs from "@/components/organisms/AboutUs";
+import AltBrands from "@/components/organisms/AltBrands";
+import ContactForm from "@/components/organisms/ContactForm";
+import Footer from "@/components/organisms/Footer";
+import PageLayout from "@/components/templates/PageLayout";
 
 export async function generateMetadata({
   params,
@@ -30,13 +33,15 @@ export async function generateMetadata({
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-bg-primary">
+    <PageLayout>
       <HeroSection />
       <TrustBar />
       <CoreServices />
       <DiagnosticWizard />
+      <AboutUs />
       <AltBrands />
+      <div id="contact"><ContactForm /></div>
       <Footer />
-    </main>
+    </PageLayout>
   );
 }
