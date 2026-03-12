@@ -1,0 +1,37 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Deploy to EC2 via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            cd /home/ec2-user/blackbeartech
+            git pull origin main
+            
+            # Build new docker image
+            docker build -t blackbear-web .
+            
+            # Stop and remove existing container
+            docker stop blackbear || true
+            docker rm blackbear || true
+            
+            # Run new container
+            docker run -d --name blackbear -p 3000:3000 --restart unless-stopped blackbear-web
+            
+            # Clean up old dangling images to save space
+            docker image prune -f
