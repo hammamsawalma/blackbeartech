@@ -1,0 +1,133 @@
+{
+  "metadata": {
+    "title": "Black Bear Tech | We Solve Your Business Problems With Technology",
+    "description": "Struggling with business problems? We build tech solutions for you. Automation, app development, websites, and data security."
+  },
+  "nav": {
+    "home": "Home",
+    "solutions": "Solutions",
+    "stories": "Success Stories",
+    "about": "About Us",
+    "contact": "Contact",
+    "cta": "Let's Solve This"
+  },
+  "hero": {
+    "badge": "Tech Experts · Available Now",
+    "headline": "Your Business Problems?",
+    "headlineAccent": "We Build the Solution.",
+    "subtext": "Tell us what's slowing you down. We'll build the tech solution — and make it simple.",
+    "ctaPrimary": "Let's Solve This Together",
+    "ctaSecondary": "Discover Our Solutions",
+    "scrollHint": "Discover More"
+  },
+  "wizard": {
+    "step1Title": "What's your business type?",
+    "step2Title": "What's your biggest challenge right now?",
+    "step3Title": "Here's what we recommend:",
+    "back": "Back",
+    "next": "Next",
+    "ctaResult": "Start a WhatsApp Chat",
+    "freeNote": "Free consultation — no commitment"
+  },
+  "services": {
+    "title": "How We Help",
+    "subtitle": "Every business problem has a tech solution. We build it — simply and clearly.",
+    "ai": {
+      "title": "Smart Automation That Works For You",
+      "description": "Save hours of repetitive manual work. Smart systems that learn and improve over time."
+    },
+    "web": {
+      "title": "Your Business Online — Web & Apps",
+      "description": "A professional digital presence that reflects your quality and attracts customers 24/7."
+    },
+    "saas": {
+      "title": "Software That Works From Anywhere",
+      "description": "Custom cloud software for your business, accessible from any computer, phone, or tablet."
+    },
+    "consulting": {
+      "title": "A Tech Expert for Your Digital Future",
+      "description": "Clear, simplified tech consulting that helps you make the right decisions."
+    },
+    "fintech": {
+      "title": "Secure Online Payments, Fast & Reliable",
+      "description": "Accept your customers' payments online safely and effortlessly."
+    },
+    "support": {
+      "title": "Always-On Support — We've Got You",
+      "description": "A support team available around the clock. Your problem gets solved before it affects your business."
+    },
+    "hosting": {
+      "title": "Your Site Stays Up — Always",
+      "description": "Fast, reliable hosting that ensures your customers can find you whenever they need you."
+    }
+  },
+  "about": {
+    "title": "We've seen your problem before. And solved it.",
+    "p1": "Black Bear Tech is the technology arm of the Black Bear Group. We work with business owners who want systems that actually work — not technical promises.",
+    "p2": "We believe technology should solve a real problem, not complicate things. That's why we always start with one question:",
+    "question": "What's slowing your business down right now?",
+    "stat1Label": "Businesses That Trust Us",
+    "stat2Label": "Reliable Uptime",
+    "stat3Label": "Non-Stop Support",
+    "stat1Value": "50+",
+    "stat2Value": "99.9%",
+    "stat3Value": "24/7"
+  },
+  "brands": {
+    "title": "The Black Bear Family",
+    "subtitle": "A family of specialized brands, each focused on a specific domain to deliver the best solutions.",
+    "tagline": "A Specialist for Every Need."
+  },
+  "trust": {
+    "clients": "+50 Clients Trust Us",
+    "uptime": "99.9% Uptime",
+    "support": "24/7 Support",
+    "consultation": "Free consultation — no commitment",
+    "response": "Reply within 2 hours"
+  },
+  "footer": {
+    "description": "Building technology that solves real business problems. Across the Middle East and beyond.",
+    "rights": "All Rights Reserved",
+    "nav": "Navigation",
+    "social": "Connect With Us"
+  },
+  "about_page": {
+    "title": "About Us",
+    "subtitle": "We are a team of tech experts focused on solving real business problems. We don't make complex promises; we build systems that work efficiently and stably.",
+    "missionTitle": "Our Mission",
+    "missionText": "To simplify technology for business owners and empower them to grow without worrying about the tech side.",
+    "valuesTitle": "Core Values",
+    "values": {
+      "simplicity": { "title": "Simplicity", "desc": "Complex systems eventually fail. We believe in direct and easy solutions." },
+      "reliability": { "title": "Reliability", "desc": "Built to last. Sites that don't crash and systems that hold up under pressure." },
+      "partnership": { "title": "Partnership", "desc": "Your success is our success. We are an extension of your team, not just a tech contractor." }
+    }
+  },
+  "solutions_page": {
+    "title": "Our Solutions",
+    "subtitle": "Browse our range of services designed to meet your business needs step by step.",
+    "learnMore": "Learn More",
+    "contactSales": "Contact Sales"
+  },
+  "contact_page": {
+    "title": "Contact Us",
+    "subtitle": "Ready to solve your tech problems? Our team is available to answer your questions and start immediately.",
+    "form": {
+      "name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number",
+      "service": "Requested Service",
+      "message": "Your Message",
+      "submit": "Send Message",
+      "success": "Your message was sent successfully! We will contact you soon.",
+      "error": "An error occurred while sending. Please try again later."
+    },
+    "info": {
+      "title": "Contact Information",
+      "email": "Email",
+      "phone": "Phone",
+      "address": "Address",
+      "addressValue": "Saudi Arabia"
+    }
+  }
+}
