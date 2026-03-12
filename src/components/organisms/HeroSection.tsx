@@ -170,13 +170,18 @@ export default function HeroSection() {
 
                     {/* ── 3D Bear Scene Side (45%) ── */}
                     <motion.div
-                        className="w-full md:w-[45%] h-[50vh] md:h-full relative pointer-events-auto flex items-center justify-center mt-8 md:mt-0"
-                        style={{ scale: sceneScale, opacity: sceneOpacity }}
+                        className="w-full md:w-[45%] h-[50vh] md:h-[75vh] relative pointer-events-auto mt-8 md:mt-0 flex items-center justify-center rounded-[2.5rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 overflow-visible backdrop-blur-md shadow-2xl"
+                        style={{ scale: sceneScale, opacity: sceneOpacity, boxShadow: "0 20px 40px -10px rgba(0,212,255,0.15)" }}
                     >
-                        {/* Radial gradient behind the bear for depth */}
-                        <div className="absolute inset-0 bg-radial from-accent-primary/5 via-transparent to-transparent opacity-50 pointer-events-none" />
+                        {/* Inner highlight ring */}
+                        <div className="absolute inset-0 rounded-[2.5rem] border border-white/[0.05] pointer-events-none" />
                         
-                        <div className="absolute inset-0 w-full h-full">
+                        {/* Radial gradient behind the bear for depth */}
+                        <div className="absolute inset-0 bg-radial from-accent-primary/10 via-transparent to-transparent opacity-80 pointer-events-none rounded-[2.5rem]" />
+                        
+                        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-accent-primary/[0.03] to-transparent pointer-events-none rounded-b-[2.5rem]" />
+
+                        <div className="absolute inset-0 w-full h-full pb-8">
                             <BearScene hoverState={hoverState} />
                         </div>
                     </motion.div>

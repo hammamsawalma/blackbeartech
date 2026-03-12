@@ -15,10 +15,10 @@ const BEAR_Y = -0.62;
 export function useBearMats() {
     return useMemo(() => {
         const body = new THREE.MeshStandardMaterial({
-            color: "#0c0c0c", roughness: 0.72, metalness: 0.3,
+            color: "#161e2b", roughness: 0.65, metalness: 0.4,
         });
         const accent = new THREE.MeshStandardMaterial({
-            color: "#1a1a1a", roughness: 0.85, metalness: 0.15,
+            color: "#1f293b", roughness: 0.75, metalness: 0.25,
         });
         const sclera = new THREE.MeshStandardMaterial({
             color: "#d0e8ff", roughness: 0.15,
@@ -837,7 +837,8 @@ function Lights() {
     return (
         <>
             {/* Near-zero ambient so the dark bear only lights up from rims */}
-            <ambientLight intensity={0.06} color="#050808" />
+            <ambientLight intensity={0.3} color="#ffffff" />
+            <hemisphereLight skyColor="#00D4FF" groundColor="#000000" intensity={0.2} />
 
             {/* ── PRIMARY RIM: electric blue from far behind-right ── */}
             <spotLight
