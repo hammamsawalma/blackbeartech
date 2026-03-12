@@ -106,6 +106,94 @@
       "feature1": "Real-time fleet tracking apps",
       "feature2": "Automated warehouse management",
       "feature3": "Predictive supply chain analytics"
+    },
+    "education": {
+      "tab": "Education & EdTech",
+      "headline": "Transforming learning with intelligent platforms.",
+      "description": "We build scalable e-learning systems, virtual classrooms, and student management portals handling thousands of concurrent users.",
+      "feature1": "Interactive virtual classrooms",
+      "feature2": "AI-driven learning analytics",
+      "feature3": "Scalable student portals"
+    },
+    "realestate": {
+      "tab": "Real Estate & PropTech",
+      "headline": "Digital property management without the headache.",
+      "description": "From virtual tours integrations to automated tenant billing, we build platforms that make real estate operations completely frictionless.",
+      "feature1": "Automated property management",
+      "feature2": "Virtual tour integrations",
+      "feature3": "Smart tenant portals"
+    },
+    "hospitality": {
+      "tab": "Hospitality & Tourism",
+      "headline": "Seamless experiences for modern travelers.",
+      "description": "We engineer booking engines and unified hotel management systems that maximize occupancy and delight your guests from check-in to check-out.",
+      "feature1": "Custom booking engines",
+      "feature2": "Unified hotel management",
+      "feature3": "Automated guest services"
+    },
+    "manufacturing": {
+      "tab": "Manufacturing & Industry 4.0",
+      "headline": "Smart factories powered by intelligent software.",
+      "description": "We integrate IoT sensors, supply chains, and production lines into real-time dashboards that eliminate bottlenecks and reduce waste.",
+      "feature1": "IoT equipment monitoring",
+      "feature2": "Production line analytics",
+      "feature3": "Automated quality control"
+    },
+    "government": {
+      "tab": "Government & Public Sector",
+      "headline": "Secure, accessible, and citizen-centric platforms.",
+      "description": "We architect highly secure, compliant portals that digitize public services and streamline bureaucratic workflows at scale.",
+      "feature1": "Citizen e-services portals",
+      "feature2": "Secure document processing",
+      "feature3": "Compliance & security audits"
+    },
+    "energy": {
+      "tab": "Energy & Utilities",
+      "headline": "Powering the future with smart grid analytics.",
+      "description": "We develop data-intensive platforms to monitor energy consumption, optimize grid distribution, and manage renewable resources.",
+      "feature1": "Smart grid dashboards",
+      "feature2": "Consumption analytics",
+      "feature3": "Renewable energy tracking"
+    },
+    "automotive": {
+      "tab": "Automotive & Mobility",
+      "headline": "Software that drives the next generation of mobility.",
+      "description": "From fleet management to connected car applications, we build the digital infrastructure powering modern vehicles.",
+      "feature1": "Connected fleet management",
+      "feature2": "Dealer inventory systems",
+      "feature3": "Mobility app development"
+    },
+    "media": {
+      "tab": "Media & Entertainment",
+      "headline": "Flawless streaming and content delivery at scale.",
+      "description": "We engineer high-bandwidth media portals, DRM-protected streaming platforms, and scalable content management systems.",
+      "feature1": "Scalable streaming platforms",
+      "feature2": "Digital rights management",
+      "feature3": "High-traffic content portals"
+    },
+    "agriculture": {
+      "tab": "Agriculture & AgriTech",
+      "headline": "Cultivating tech-driven farming solutions.",
+      "description": "We integrate smart sensors and predictive weather algorithms to build dashboards that optimize crop yields and resource usage.",
+      "feature1": "Smart farm dashboards",
+      "feature2": "Crop yield predictions",
+      "feature3": "IoT soil monitoring"
+    },
+    "telecom": {
+      "tab": "Telecommunications",
+      "headline": "Robust billing and network management systems.",
+      "description": "We build low-latency infrastructure portals, automated billing systems, and customer self-service apps for telecom providers.",
+      "feature1": "Automated telecom billing",
+      "feature2": "Network status dashboards",
+      "feature3": "Customer self-service apps"
+    },
+    "nonprofit": {
+      "tab": "Non-Profits & NGOs",
+      "headline": "Technology that amplifies your global impact.",
+      "description": "We design transparent donation platforms, volunteer coordination systems, and impact tracking dashboards for modern NGOs.",
+      "feature1": "Secure donation platforms",
+      "feature2": "Volunteer management",
+      "feature3": "Impact tracking dashboards"
     }
   },
   "trust": {

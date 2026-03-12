@@ -4,10 +4,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { Icon } from "@/components/atoms";
-import { ShoppingCart, ShieldCheck, Activity, Truck, CheckCircle2 } from "lucide-react";
+import { ShoppingCart, ShieldCheck, Activity, Truck, CheckCircle2, GraduationCap, Building2, Plane, Factory, Landmark, Zap, Car, PlaySquare, Leaf, Radio, HeartHandshake } from "lucide-react";
 import Image from "next/image";
 
-type IndustryKey = "ecommerce" | "fintech" | "healthcare" | "logistics";
+type IndustryKey = "ecommerce" | "fintech" | "healthcare" | "logistics" | "education" | "realestate" | "hospitality" | "manufacturing" | "government" | "energy" | "automotive" | "media" | "agriculture" | "telecom" | "nonprofit";
 
 export default function Industries() {
     const t = useTranslations("industries");
@@ -20,6 +20,17 @@ export default function Industries() {
         { id: "fintech", icon: ShieldCheck, imagePos: "object-center" },
         { id: "healthcare", icon: Activity, imagePos: "object-center" },
         { id: "logistics", icon: Truck, imagePos: "object-center" },
+        { id: "education", icon: GraduationCap, imagePos: "object-center" },
+        { id: "realestate", icon: Building2, imagePos: "object-center" },
+        { id: "hospitality", icon: Plane, imagePos: "object-center" },
+        { id: "manufacturing", icon: Factory, imagePos: "object-center" },
+        { id: "government", icon: Landmark, imagePos: "object-center" },
+        { id: "energy", icon: Zap, imagePos: "object-center" },
+        { id: "automotive", icon: Car, imagePos: "object-center" },
+        { id: "media", icon: PlaySquare, imagePos: "object-center" },
+        { id: "agriculture", icon: Leaf, imagePos: "object-center" },
+        { id: "telecom", icon: Radio, imagePos: "object-center" },
+        { id: "nonprofit", icon: HeartHandshake, imagePos: "object-center" },
     ];
 
     return (
@@ -51,30 +62,30 @@ export default function Industries() {
                 </div>
 
                 {/* Main Content Area */}
-                <div className="flex flex-col lg:flex-row gap-8 lg:gap-12 items-start">
+                <div className="flex flex-col gap-10 lg:gap-14 w-full mx-auto">
                     
-                    {/* Tabs Navigation (Left/Top) */}
-                    <div className="w-full lg:w-1/3 flex flex-col gap-3">
+                    {/* Tabs Navigation (Top) */}
+                    <div className="flex flex-wrap items-center justify-center gap-2 md:gap-3 w-full">
                         {industries.map((ind, index) => {
                             const isActive = activeTab === ind.id;
                             return (
                                 <motion.button
                                     key={ind.id}
-                                    initial={{ opacity: 0, x: isRTL ? 20 : -20 }}
-                                    whileInView={{ opacity: 1, x: 0 }}
+                                    initial={{ opacity: 0, y: 15 }}
+                                    whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1 }}
+                                    transition={{ delay: index * 0.03 }}
                                     onClick={() => setActiveTab(ind.id)}
-                                    className={`relative flex items-center gap-4 p-5 rounded-2xl text-start transition-all duration-300 border ${
+                                    className={`relative flex items-center gap-2 md:gap-2.5 px-4 py-2.5 md:px-5 md:py-3 rounded-full text-start transition-all duration-300 border ${
                                         isActive 
-                                            ? "bg-accent-primary/10 border-accent-primary/30 shadow-[0_0_30px_rgba(0,212,255,0.1)]" 
+                                            ? "bg-accent-primary/10 border-accent-primary/40 shadow-[0_0_20px_rgba(0,212,255,0.15)]" 
                                             : "bg-white/5 border-white/5 hover:bg-white/10 hover:border-white/10"
                                     }`}
                                 >
-                                    <div className={`p-3 rounded-xl transition-colors duration-300 ${isActive ? "bg-accent-primary text-black" : "bg-white/10 text-white"}`}>
+                                    <div className={`transition-colors duration-300 ${isActive ? "text-accent-primary" : "text-white/60"}`}>
                                         <Icon icon={ind.icon} size="sm" />
                                     </div>
-                                    <span className={`font-bold text-lg transition-colors duration-300 ${isActive ? "text-white" : "text-text-muted"}`}>
+                                    <span className={`font-medium text-sm md:text-base whitespace-nowrap transition-colors duration-300 ${isActive ? "text-white font-bold" : "text-text-muted"}`}>
                                         {t(`${ind.id}.tab`)}
                                     </span>
                                 </motion.button>
@@ -82,8 +93,8 @@ export default function Industries() {
                         })}
                     </div>
 
-                    {/* Content Display (Right/Bottom) */}
-                    <div className="w-full lg:w-2/3 min-h-[500px] relative">
+                    {/* Content Display (Bottom) */}
+                    <div className="w-full lg:w-[85%] mx-auto min-h-[450px] relative">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={activeTab}

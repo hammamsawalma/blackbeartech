@@ -96,9 +96,11 @@ test.describe('Home Page — Arabic (RTL)', () => {
     await expect(aboutSection).toHaveCount(1);
   });
 
-  // ─── AltBrands ───
-  test('AltBrands section renders brand cards', async ({ page }) => {
-    await expect(page.getByText('بلاك بير تك').first()).toBeVisible();
+  // ─── Industries ───
+  test('Industries section renders tab buttons and content', async ({ page }) => {
+    await expect(page.getByText('قطاعات نبتكر لها').first()).toBeVisible();
+    await expect(page.getByRole('button', { name: 'التجارة الإلكترونية' })).toBeVisible();
+    await expect(page.getByText('لا تدع بطء الموقع يخسرك المزيد من المبيعات.').first()).toBeVisible();
   });
 
   // ─── Footer ───
