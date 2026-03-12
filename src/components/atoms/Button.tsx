@@ -1,4 +1,4 @@
-import React, { ElementType } from 'react';
+import React, { ElementType, useCallback, useRef } from 'react';
 import { motion, HTMLMotionProps } from 'framer-motion';
 import { Loader2 } from 'lucide-react';
 
@@ -43,11 +43,39 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       fullWidth = false,
       as: Component = 'button',
       className = '',
+      onClick,
       ...props
     },
     ref
   ) => {
-    const baseStyles = 'relative inline-flex items-center justify-center gap-2 rounded-xl transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary focus-visible:ring-accent-primary z-10';
+    const rippleRef = useRef<HTMLSpanElement>(null);
+
+    const handleClick = useCallback(
+      (e: React.MouseEvent<HTMLButtonElement>) => {
+        // Ripple effect
+        const btn = (e.currentTarget as HTMLElement);
+        const rect = btn.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.style.cssText = `
+          position: absolute; border-radius: 50%; pointer-events: none;
+          width: ${size}px; height: ${size}px; left: ${x}px; top: ${y}px;
+          background: rgba(255,255,255,0.2); transform: scale(0);
+          animation: btn-ripple 0.5s ease-out forwards;
+        `;
+        btn.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+
+        // Call original onClick
+        if (onClick) (onClick as any)(e);
+      },
+      [onClick]
+    );
+
+    const baseStyles = 'relative inline-flex items-center justify-center gap-2 rounded-xl overflow-hidden transition-all duration-300 outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-bg-primary focus-visible:ring-accent-primary';
     
     const combinedClasses = [
       baseStyles,
@@ -65,13 +93,14 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         ref={ref}
         className={combinedClasses}
         whileHover={!disabled && !loading ? { y: -2 } : {}}
-        whileTap={!disabled && !loading ? { scale: 0.98 } : {}}
+        whileTap={!disabled && !loading ? { scale: 0.97 } : {}}
         disabled={disabled || loading}
+        onClick={!disabled && !loading ? handleClick : undefined}
         {...props}
       >
         {loading && <Loader2 className="w-4 h-4 animate-spin" />}
         {!loading && icon && iconPosition === 'left' && icon}
-        <span>{children}</span>
+        <span className="relative z-[1]">{children}</span>
         {!loading && icon && iconPosition === 'right' && icon}
       </MotionComponent>
     );
@@ -80,3 +109,4 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
 Button.displayName = 'Button';
 export default Button;
+

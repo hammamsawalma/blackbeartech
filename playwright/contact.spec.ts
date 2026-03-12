@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Contact Form — Submission & Validation', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/ar');
+    await page.goto('/');
     await page.waitForLoadState('networkidle');
     // Scroll to contact section
     const contact = page.locator('#contact');

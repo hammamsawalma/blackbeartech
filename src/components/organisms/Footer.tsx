@@ -22,10 +22,10 @@ export default function Footer() {
     return (
         <footer className="bg-black relative overflow-hidden border-t border-white/[0.06] pt-20 pb-10">
             {/* Section divider image */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[2px] bg-gradient-to-r from-transparent via-[#00D4FF]/30 to-transparent" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-4xl h-[2px] bg-gradient-to-r from-transparent via-accent-primary/30 to-transparent" />
 
             {/* Subtle glow */}
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[200px] bg-[#00D4FF]/[0.03] blur-[100px] pointer-events-none" />
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-1/2 h-[200px] bg-accent-primary/[0.03] blur-[100px] pointer-events-none" />
 
             <div className="container mx-auto px-6 relative z-10" dir={isRTL ? "rtl" : "ltr"}>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
@@ -40,9 +40,9 @@ export default function Footer() {
                         <motion.h4
                             whileInView={{ scale: [0.95, 1] }}
                             viewport={{ once: true }}
-                            className="text-2xl font-bold tracking-tight mb-4 flex items-center gap-2"
+                            className="text-2xl font-bold tracking-tight mb-4 flex items-center gap-3"
                         >
-                            <span className="w-4 h-4 rounded-sm bg-white" />
+                            <img src="/logo-icon.png" alt="Black Bear Tech Logo" className="w-8 h-8 object-contain drop-shadow-[0_0_12px_rgba(0,212,255,0.3)]" />
                             {isRTL ? "بلاك بير تك" : "Black Bear Tech"}
                         </motion.h4>
                         <p className="text-white/40 max-w-sm mb-8">
@@ -54,7 +54,7 @@ export default function Footer() {
                             href={whatsappLink}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-[#00D4FF] to-[#00A3CC] hover:opacity-90 transition-all shadow-lg shadow-[#00D4FF]/10"
+                            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl font-semibold text-sm text-white bg-gradient-to-r from-accent-primary to-accent-primary/80 hover:opacity-90 transition-all shadow-lg shadow-accent-primary/10"
                         >
                             <Icon icon={MessageCircle} size="sm" />
                             {isRTL ? "تواصل عبر واتساب" : "Contact on WhatsApp"}
@@ -98,7 +98,7 @@ export default function Footer() {
                                 <Link
                                     key={i}
                                     href={social.href}
-                                    className="p-2.5 bg-white/5 border border-white/[0.06] rounded-lg hover:border-[#00D4FF]/30 text-white/40 hover:text-white hover:shadow-lg hover:shadow-[#00D4FF]/5 transition-all duration-300"
+                                    className="p-2.5 bg-white/5 border border-white/[0.06] rounded-lg hover:border-accent-primary/30 text-white/40 hover:text-white hover:shadow-lg hover:shadow-accent-primary/5 transition-all duration-300"
                                 >
                                     <Icon icon={social.icon} size="md" />
                                 </Link>

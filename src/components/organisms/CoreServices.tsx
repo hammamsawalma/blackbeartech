@@ -77,7 +77,7 @@ export default function CoreServices() {
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
                             placeholder={isRTL ? "ابحث عن خدمة..." : "Search services..."}
-                            className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl py-3 text-sm text-white placeholder:text-white/30 focus:border-[#00D4FF]/40 focus:ring-1 focus:ring-[#00D4FF]/20 focus:outline-none transition-all"
+                            className="w-full bg-white/[0.03] border border-white/[0.08] rounded-xl py-3 text-sm text-white placeholder:text-white/30 focus:border-accent-primary/40 focus:ring-1 focus:ring-accent-primary/20 focus:outline-none transition-all"
                             style={{ [isRTL ? 'paddingRight' : 'paddingLeft']: '3rem', [isRTL ? 'paddingLeft' : 'paddingRight']: '1rem' }}
                         />
                     </div>
@@ -92,21 +92,26 @@ export default function CoreServices() {
                             <motion.div
                                 key={service.key}
                                 layout
-                                initial={{ opacity: 0, scale: 0.9 }}
-                                animate={{ opacity: 1, scale: 1 }}
+                                initial={{ opacity: 0, y: 24 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true, margin: '-50px' }}
                                 exit={{ opacity: 0, scale: 0.9 }}
-                                transition={{ duration: 0.3 }}
+                                transition={{ duration: 0.5, delay: filteredServices.indexOf(service) * 0.08, ease: [0.22, 1, 0.36, 1] }}
                             >
-                                <Card variant="interactive" glow glowColor={service.accent}>
-                                    <div className="mb-6 w-16 h-16 rounded-xl bg-white/5 border border-white/[0.08] flex items-center justify-center overflow-hidden group-hover:scale-110 transition-transform duration-300">
+                                    <Card variant="interactive" glow glowColor={service.accent}>
+                                    <motion.div 
+                                        className="mb-6 w-16 h-16 rounded-xl bg-white/5 border border-white/[0.08] flex items-center justify-center overflow-hidden"
+                                        whileHover={{ scale: 1.1, rotate: [0, -3, 3, 0] }}
+                                        transition={{ duration: 0.4 }}
+                                    >
                                         <img
                                             src={serviceIconMap[service.key]}
                                             alt=""
                                             className="w-12 h-12 object-contain"
                                             loading="lazy"
                                         />
-                                    </div>
-                                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-[#00D4FF] transition-colors">
+                                    </motion.div>
+                                    <h3 className="text-lg font-bold text-white mb-3 group-hover:text-accent-primary transition-colors">
                                         {t(`${service.key}.title`)}
                                     </h3>
                                     <p className="text-white/40 text-sm leading-relaxed">
@@ -134,7 +139,7 @@ export default function CoreServices() {
             </div>
 
             {/* Subtle glow */}
-            <div className="absolute top-1/2 left-0 w-full h-[500px] bg-[#00D4FF]/[0.03] blur-[150px] -translate-y-1/2 pointer-events-none" />
+            <div className="absolute top-1/2 left-0 w-full h-[500px] bg-accent-primary/[0.03] blur-[150px] -translate-y-1/2 pointer-events-none" />
         </section>
     );
 }

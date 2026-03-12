@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('DiagnosticWizard — Full Flow', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/ar');
+    await page.goto('/');
     await page.waitForLoadState('networkidle');
   });
 

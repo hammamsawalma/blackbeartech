@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Black Bear Tech",
-  description: "Enterprise tech solutions",
+  metadataBase: new URL("https://blackbear.agency"),
+  title: "Black Bear Tech | We Solve Your Business Problems With Technology",
+  description: "Enterprise tech solutions across the Middle East and beyond.",
 };
 
 export default function RootLayout({

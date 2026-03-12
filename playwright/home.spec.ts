@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Home Page — Arabic (RTL)', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/ar');
+    await page.goto('/');
     await page.waitForLoadState('networkidle');
   });
 
@@ -26,7 +26,7 @@ test.describe('Home Page — Arabic (RTL)', () => {
   });
 
   test('Language switcher shows EN button in Arabic mode', async ({ page }) => {
-    await expect(page.getByRole('button', { name: 'EN' })).toBeVisible();
+    await expect(page.getByRole('button', { name: 'Switch to English' })).toBeVisible();
   });
 
   // ─── Hero Section ───

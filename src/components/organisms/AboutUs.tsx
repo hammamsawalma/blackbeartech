@@ -46,15 +46,19 @@ export default function AboutUs() {
                             {stats.map((stat, index) => (
                                 <motion.div
                                     key={index}
-                                    initial={{ opacity: 0, y: 20 }}
+                                    initial={{ opacity: 0, y: 24 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
-                                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                                    className="flex flex-col items-start p-4 glass rounded-2xl group border border-white/5 hover:border-[#00D4FF]/30 transition-colors"
+                                    transition={{ delay: 0.2 + index * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                                    className="flex flex-col items-start p-4 glass rounded-2xl group border border-white/5 hover:border-accent-primary/30 transition-colors"
                                 >
-                                    <div className="text-[#00D4FF] mb-3 p-2 rounded-lg bg-white/5 group-hover:scale-110 transition-transform duration-300">
+                                    <motion.div 
+                                        className="text-accent-primary mb-3 p-2 rounded-lg bg-white/5"
+                                        whileHover={{ scale: 1.15, rotate: 5 }}
+                                        transition={{ type: 'spring', stiffness: 400, damping: 15 }}
+                                    >
                                         {stat.icon}
-                                    </div>
+                                    </motion.div>
                                     <span className="text-3xl font-bold text-white mb-1">
                                         {stat.value}
                                     </span>
@@ -92,7 +96,7 @@ export default function AboutUs() {
             </div>
 
             {/* Subtle glow */}
-            <div className="absolute top-1/2 right-0 w-1/3 h-[400px] bg-[#00D4FF]/[0.03] blur-[120px] -translate-y-1/2 pointer-events-none" />
+            <div className="absolute top-1/2 right-0 w-1/3 h-[400px] bg-accent-primary/[0.03] blur-[120px] -translate-y-1/2 pointer-events-none" />
         </section>
     );
 }

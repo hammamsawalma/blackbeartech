@@ -1,7 +1,7 @@
 'use client';
 
 import { useLocale } from 'next-intl';
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from '@/i18n/navigation';
 import { motion } from 'framer-motion';
 
 export default function LanguageSwitcher() {
@@ -11,10 +11,7 @@ export default function LanguageSwitcher() {
 
   const toggle = () => {
     const nextLocale = locale === 'ar' ? 'en' : 'ar';
-    const segments = pathname.split('/');
-    segments[1] = nextLocale;
-    const newPath = segments.join('/') || `/${nextLocale}`;
-    router.push(newPath);
+    router.replace(pathname, { locale: nextLocale });
   };
 
   return (

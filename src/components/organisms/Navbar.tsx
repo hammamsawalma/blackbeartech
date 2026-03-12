@@ -2,8 +2,7 @@
 
 import { useTranslations, useLocale } from 'next-intl';
 import { motion, AnimatePresence } from 'framer-motion';
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
+import { Link, usePathname } from '@/i18n/navigation';
 import { useState, useEffect, useCallback } from 'react';
 import LanguageSwitcher from '../LanguageSwitcher';
 import { Button } from '@/components/atoms';
@@ -81,35 +80,34 @@ export default function Navbar() {
   }, []);
 
   const navLinks = [
-    { href: `/${locale}#hero`, section: 'hero', label: t('home') },
-    { href: `/${locale}#services`, section: 'services', label: t('services') },
-    { href: `/${locale}#about`, section: 'about', label: t('about') },
-    { href: `/${locale}#contact`, section: 'contact', label: t('contact') },
+    { href: '/#hero', section: 'hero', label: t('home') },
+    { href: '/#services', section: 'services', label: t('services') },
+    { href: '/#about', section: 'about', label: t('about') },
+    { href: '/#contact', section: 'contact', label: t('contact') },
   ];
 
   return (
     <header
-      className={`fixed top-0 inset-x-0 z-50 transition-all duration-500 ${
+      className={`fixed top-0 inset-x-0 transition-all duration-500 will-change-transform ${
         scrolled
           ? 'bg-black/80 backdrop-blur-2xl border-b border-white/[0.06] shadow-2xl shadow-black/50'
           : 'bg-transparent'
       }`}
+      style={{ zIndex: 'var(--z-nav)' }}
     >
       <nav
         className="container mx-auto px-6 h-16 flex items-center justify-between"
         dir={isRTL ? 'rtl' : 'ltr'}
       >
         {/* Logo */}
-        <Link href={`/${locale}`} className="flex items-center gap-2.5 group">
-          <motion.span
-            whileHover={{ rotate: [0, -8, 8, 0] }}
+        <Link href="/" className="flex items-center gap-2.5 group">
+          <motion.div
+            whileHover={{ scale: 1.05, rotate: [-2, 2, 0] }}
             transition={{ duration: 0.4 }}
-            className="w-8 h-8 rounded-xl bg-white 
-              flex items-center justify-center text-black font-bold text-sm
-              shadow-lg shadow-white/10 group-hover:shadow-white/20 transition-shadow"
+            className="w-8 h-8 flex items-center justify-center relative drop-shadow-md group-hover:drop-shadow-[0_0_8px_rgba(0,212,255,0.5)] transition-all"
           >
-            B
-          </motion.span>
+            <img src="/logo-icon.png" alt="Black Bear Tech Logo" className="w-full h-full object-contain" />
+          </motion.div>
           <span className="font-bold text-white text-sm tracking-tight">
             {isRTL ? 'بلاك بير تك' : 'Black Bear Tech'}
           </span>
@@ -133,7 +131,7 @@ export default function Navbar() {
               {activeSection === link.section && (
                 <motion.span
                   layoutId="nav-active"
-                  className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-[#00D4FF]"
+                  className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent-primary"
                   transition={{ type: 'spring', stiffness: 400, damping: 30 }}
                 />
               )}
@@ -147,9 +145,9 @@ export default function Navbar() {
 
           <Button
             as={Link}
-            href={`/${locale}#contact`}
+            href="/#contact"
             // @ts-ignore — Link onClick type mismatch
-            onClick={(e: any) => handleNavClick(e, `/${locale}#contact`)}
+            onClick={(e: any) => handleNavClick(e, '/#contact')}
             variant="primary"
             size="sm"
             className="hidden md:flex items-center gap-2"
@@ -184,7 +182,8 @@ export default function Navbar() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 top-16 bg-black/95 backdrop-blur-2xl md:hidden z-40 flex flex-col"
+            className="fixed inset-0 top-16 bg-black/95 backdrop-blur-2xl md:hidden flex flex-col"
+            style={{ zIndex: 'var(--z-overlay)' }}
             dir={isRTL ? 'rtl' : 'ltr'}
           >
             {/* Nav Links — Large & Touch-friendly */}
@@ -212,7 +211,7 @@ export default function Navbar() {
                   >
                     {link.label}
                     {activeSection === link.section && (
-                      <span className="inline-block w-2 h-2 rounded-full bg-[#00D4FF] ml-3 mb-0.5" />
+                      <span className="inline-block w-2 h-2 rounded-full bg-accent-primary ml-3 mb-0.5" />
                     )}
                   </Link>
                 </motion.div>
@@ -226,12 +225,12 @@ export default function Navbar() {
                 className="w-full mt-6"
               >
                 <Link
-                  href={`/${locale}#contact`}
+                  href="/#contact"
                   onClick={(e) => {
-                    handleNavClick(e, `/${locale}#contact`);
+                    handleNavClick(e, '/#contact');
                     if (!e.defaultPrevented) setMenuOpen(false);
                   }}
-                  className="block text-center w-full py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-[#00D4FF] to-[#00A3CC] hover:opacity-90 transition-all text-lg"
+                  className="block text-center w-full py-4 rounded-2xl font-bold text-white bg-gradient-to-r from-accent-primary to-accent-primary/80 hover:opacity-90 transition-all text-lg"
                 >
                   {t('cta')} <span className={isRTL ? 'rotate-180 inline-block' : ''}>→</span>
                 </Link>

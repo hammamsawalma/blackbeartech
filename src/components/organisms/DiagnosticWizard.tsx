@@ -62,7 +62,7 @@ export default function DiagnosticWizard() {
                             initial={{ opacity: 0, x: slideDir * 40 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: slideDir * -40 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         >
                             <h2 className="text-2xl md:text-4xl font-bold text-center mb-10">
                                 {t("step1Title")}
@@ -93,7 +93,7 @@ export default function DiagnosticWizard() {
                             initial={{ opacity: 0, x: slideDir * 40 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: slideDir * -40 }}
-                            transition={{ duration: 0.3 }}
+                            transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
                         >
                             <h2 className="text-2xl md:text-4xl font-bold text-center mb-10">
                                 {t("step2Title")}
@@ -128,9 +128,9 @@ export default function DiagnosticWizard() {
                     {step === "result" && recommendation && (
                         <motion.div
                             key="result"
-                            initial={{ opacity: 0, scale: 0.95 }}
-                            animate={{ opacity: 1, scale: 1 }}
-                            transition={{ duration: 0.4 }}
+                            initial={{ opacity: 0, scale: 0.92, y: 20 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
                         >
                             <div className="card-cheerful p-10 text-center border border-accent-primary/20 relative overflow-hidden">
                                 {/* Glow background */}

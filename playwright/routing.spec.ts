@@ -2,15 +2,19 @@ import { test, expect } from '@playwright/test';
 
 test.describe('i18n Routing & Language Switching', () => {
   
-  test('Root path redirects to a locale', async ({ page }) => {
+  test('Root path resolves to default locale (Arabic)', async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
-    // Should redirect to /en or /ar based on browser accept-language
-    await expect(page).toHaveURL(/\/(en|ar)/);
+    // The URL should remain at the root
+    await expect(page).toHaveURL(/.*\/$/);
+    
+    // It should render Arabic content by default
+    const html = page.locator('html');
+    await expect(html).toHaveAttribute('lang', 'ar');
   });
 
-  test('Arabic page has correct dir and lang', async ({ page }) => {
-    await page.goto('/ar');
+  test('Arabic rendering on root page', async ({ page }) => {
+    await page.goto('/');
     await page.waitForLoadState('networkidle');
     
     const html = page.locator('html');
@@ -43,11 +47,11 @@ test.describe('i18n Routing & Language Switching', () => {
   });
 
   test('Language switcher AR→EN works', async ({ page }) => {
-    await page.goto('/ar');
+    await page.goto('/');
     await page.waitForLoadState('networkidle');
     
     // Click EN button
-    await page.getByRole('button', { name: 'EN' }).click();
+    await page.getByRole('button', { name: 'Switch to English' }).click();
     
     // Wait for navigation to /en
     await page.waitForURL(/\/en/, { timeout: 10000 });
@@ -65,10 +69,10 @@ test.describe('i18n Routing & Language Switching', () => {
     await page.waitForLoadState('networkidle');
     
     // In English, switcher shows عربي
-    await page.getByRole('button', { name: 'عربي' }).click();
+    await page.getByRole('button', { name: 'التحويل للعربية' }).click();
     
-    // Wait for navigation to /ar
-    await page.waitForURL(/\/ar/, { timeout: 10000 });
+    // Wait for navigation to / (Arabic root)
+    await page.waitForURL((url) => new URL(url).pathname === '/', { timeout: 10000 });
     
     const html = page.locator('html');
     await expect(html).toHaveAttribute('dir', 'rtl');

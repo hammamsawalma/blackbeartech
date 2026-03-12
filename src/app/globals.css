@@ -115,6 +115,33 @@
   --glow-radius-lg:  80px;
   --glow-intensity:  0.15;
 
+  /* ─── Transition Easings ─── */
+  --ease-out-expo:   cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-back:   cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-spring:     cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth:     cubic-bezier(0.4, 0, 0.2, 1);
+
+  --duration-fast:   150ms;
+  --duration-normal: 300ms;
+  --duration-slow:   500ms;
+  --duration-slower: 800ms;
+
+  /* ─── Elevation / Shadow System ─── */
+  --shadow-elevation-1: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  --shadow-elevation-2: 0 4px 12px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.2);
+  --shadow-elevation-3: 0 8px 30px rgba(0, 0, 0, 0.4), 0 4px 8px rgba(0, 0, 0, 0.2);
+  --shadow-elevation-4: 0 16px 50px rgba(0, 0, 0, 0.5), 0 8px 16px rgba(0, 0, 0, 0.25);
+
+  /* ─── Z-Index Scale ─── */
+  --z-base:     1;
+  --z-dropdown: 10;
+  --z-sticky:   20;
+  --z-overlay:  30;
+  --z-nav:      50;
+  --z-modal:    100;
+  --z-toast:    200;
+  --z-max:      9999;
+
   /* ─── Fonts ─── */
   --font-heading-ar:  var(--font-cairo);
   --font-body-ar:     var(--font-ibm-arabic);
@@ -265,7 +292,7 @@
     color: var(--color-text-inverse);
     border-radius: var(--radius-lg);
     font-weight: 700;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all var(--duration-normal) var(--ease-spring);
   }
   .btn-primary:hover {
     transform: translateY(-2px);
@@ -282,7 +309,7 @@
     color: white;
     border-radius: var(--radius-lg);
     font-weight: 700;
-    transition: all 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all var(--duration-normal) var(--ease-spring);
   }
   .btn-gradient:hover {
     transform: translateY(-2px);
@@ -311,7 +338,7 @@
     backdrop-filter: blur(24px) saturate(1.2);
     border: 1px solid rgba(255, 255, 255, 0.06);
     border-radius: var(--radius-xl);
-    transition: all 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: all var(--duration-slow) var(--ease-spring);
   }
   .card-cheerful:hover {
     border-color: rgba(0, 212, 255, 0.2);
@@ -378,6 +405,60 @@
     background-size: 200% 100%;
     animation: shimmer 2s infinite ease-in-out;
     border-radius: var(--radius-md);
+  }
+
+  /* ─── Button Ripple ─── */
+  @keyframes btn-ripple {
+    0%   { transform: scale(0); opacity: 0.5; }
+    100% { transform: scale(2.5); opacity: 0; }
+  }
+
+  /* ─── Scroll Reveal Animations ─── */
+  @keyframes fade-in-up {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes fade-in-scale {
+    from { opacity: 0; transform: scale(0.95); }
+    to   { opacity: 1; transform: scale(1); }
+  }
+
+  .animate-fade-in-up {
+    animation: fade-in-up var(--duration-slower) var(--ease-out-expo) both;
+  }
+
+  .animate-fade-in-scale {
+    animation: fade-in-scale var(--duration-slower) var(--ease-out-expo) both;
+  }
+
+  /* Stagger delay utilities for children */
+  .stagger-1 { animation-delay: 50ms; }
+  .stagger-2 { animation-delay: 100ms; }
+  .stagger-3 { animation-delay: 150ms; }
+  .stagger-4 { animation-delay: 200ms; }
+  .stagger-5 { animation-delay: 250ms; }
+  .stagger-6 { animation-delay: 300ms; }
+  .stagger-7 { animation-delay: 350ms; }
+
+  /* ─── Decorative Float ─── */
+  @keyframes subtle-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+
+  .animate-float {
+    animation: subtle-float 4s var(--ease-smooth) infinite;
+  }
+
+  /* ─── Pulse Glow ─── */
+  @keyframes pulse-glow {
+    0%, 100% { opacity: 0.6; }
+    50%      { opacity: 1; }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s var(--ease-smooth) infinite;
   }
 }
 

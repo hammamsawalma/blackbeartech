@@ -1,34 +1,17 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import { ArrowRight, MessageCircle } from "lucide-react";
 import Link from "next/link";
 import { useTranslations, useLocale } from "next-intl";
-import dynamic from "next/dynamic";
 import { Button, Badge, Icon } from "@/components/atoms";
-
-// Load the heavy Three.js scene client-side only (no SSR)
-const BearScene = dynamic(() => import("../BearScene"), {
-    ssr: false,
-    loading: () => (
-        <div className="absolute inset-0 flex items-center justify-center bg-black">
-            <div className="flex flex-col items-center gap-4 relative z-10">
-                <div className="w-12 h-12 border-2 border-accent-primary/40 border-t-accent-primary rounded-full animate-spin" />
-                <span className="font-mono text-accent-primary/60 text-xs tracking-widest">
-                    INITIALIZING BB_CORE...
-                </span>
-            </div>
-        </div>
-    ),
-});
 
 export default function HeroSection() {
     const t = useTranslations("hero");
     const locale = useLocale();
     const isRTL = locale === "ar";
     const containerRef = useRef<HTMLDivElement>(null);
-    const [hoverState, setHoverState] = useState<"idle" | "cta">("idle");
 
     const { scrollYProgress } = useScroll({
         target: containerRef,
@@ -39,9 +22,9 @@ export default function HeroSection() {
     const textOpacity = useTransform(scrollYProgress, [0, 0.4], [1, 0]);
     const textY = useTransform(scrollYProgress, [0, 0.4], [0, -100]);
 
-    // 3D scene fades + scales on scroll
-    const sceneScale = useTransform(scrollYProgress, [0, 1], [1, 1.04]);
-    const sceneOpacity = useTransform(scrollYProgress, [0.6, 1], [1, 0]);
+    // Logo side fades + scales on scroll
+    const logoScale = useTransform(scrollYProgress, [0, 1], [1, 1.04]);
+    const logoOpacity = useTransform(scrollYProgress, [0.6, 1], [1, 0]);
 
     const whatsappNumber = "+966500000000";
     const whatsappMessage = encodeURIComponent(
@@ -69,7 +52,7 @@ export default function HeroSection() {
                 </div>
 
                 {/* Layer 2: Ambient cyan glow */}
-                <div className="absolute inset-0 bg-radial from-[#00D4FF]/[0.06] via-transparent to-transparent pointer-events-none z-0" />
+                <div className="absolute inset-0 bg-radial from-accent-primary/[0.06] via-transparent to-transparent pointer-events-none z-0" />
 
                 {/* Layer 3: Grid overlay */}
                 <div
@@ -146,8 +129,6 @@ export default function HeroSection() {
                                 size="lg"
                                 icon={<Icon icon={MessageCircle} size="md"  />}
                                 iconPosition={isRTL ? "left" : "right"}
-                                onMouseEnter={() => setHoverState("cta")}
-                                onMouseLeave={() => setHoverState("idle")}
                             >
                                 {t("ctaPrimary")}
                             </Button>
@@ -159,8 +140,6 @@ export default function HeroSection() {
                                 size="lg"
                                 icon={<ArrowRight className={`w-5 h-5 ${isRTL ? "rotate-180" : ""}`} />}
                                 iconPosition={isRTL ? "left" : "right"}
-                                onMouseEnter={() => setHoverState("cta")}
-                                onMouseLeave={() => setHoverState("idle")}
                             >
                                 {t("ctaSecondary")}
                             </Button>
@@ -168,22 +147,62 @@ export default function HeroSection() {
                         </div>
                     </motion.div>
 
-                    {/* ── 3D Bear Scene Side (45%) ── */}
+                    {/* ── Logo Showcase Side (45%) ── */}
                     <motion.div
-                        className="w-full md:w-[45%] h-[50vh] md:h-[75vh] relative pointer-events-auto mt-8 md:mt-0 flex items-center justify-center rounded-[2.5rem] bg-gradient-to-br from-white/[0.05] to-transparent border border-white/10 overflow-visible backdrop-blur-md shadow-2xl"
-                        style={{ scale: sceneScale, opacity: sceneOpacity, boxShadow: "0 20px 40px -10px rgba(0,212,255,0.15)" }}
+                        className="w-full md:w-[45%] h-[50vh] md:h-[75vh] relative mt-8 md:mt-0 flex items-center justify-center"
+                        style={{ scale: logoScale, opacity: logoOpacity }}
                     >
-                        {/* Inner highlight ring */}
-                        <div className="absolute inset-0 rounded-[2.5rem] border border-white/[0.05] pointer-events-none" />
-                        
-                        {/* Radial gradient behind the bear for depth */}
-                        <div className="absolute inset-0 bg-radial from-accent-primary/10 via-transparent to-transparent opacity-80 pointer-events-none rounded-[2.5rem]" />
-                        
-                        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-accent-primary/[0.03] to-transparent pointer-events-none rounded-b-[2.5rem]" />
+                        {/* Pulsing glow behind the logo */}
+                        <motion.div
+                            className="absolute w-[70%] h-[70%] rounded-full"
+                            style={{
+                                background: "radial-gradient(circle, rgba(0,212,255,0.15) 0%, rgba(255,107,157,0.08) 50%, transparent 70%)",
+                                filter: "blur(60px)",
+                            }}
+                            animate={{
+                                scale: [1, 1.15, 1],
+                                opacity: [0.6, 1, 0.6],
+                            }}
+                            transition={{
+                                duration: 4,
+                                repeat: Infinity,
+                                ease: "easeInOut",
+                            }}
+                        />
 
-                        <div className="absolute inset-0 w-full h-full pb-8">
-                            <BearScene hoverState={hoverState} />
-                        </div>
+                        {/* Secondary rotating glow ring */}
+                        <motion.div
+                            className="absolute w-[65%] h-[65%] rounded-full border border-accent-primary/10"
+                            animate={{ rotate: 360 }}
+                            transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+                            style={{
+                                boxShadow: "0 0 40px rgba(0,212,255,0.08), inset 0 0 40px rgba(0,212,255,0.05)",
+                            }}
+                        />
+
+                        {/* The Logo */}
+                        <motion.img
+                            src="/logo.png"
+                            alt="Black Bear Tech"
+                            className="relative z-10 w-auto h-[55%] md:h-[65%] object-contain drop-shadow-[0_0_40px_rgba(0,212,255,0.25)]"
+                            initial={{ opacity: 0, scale: 0.8, y: 40 }}
+                            animate={{ opacity: 1, scale: 1, y: 0 }}
+                            transition={{ duration: 1.2, delay: 0.3, ease: "easeOut" }}
+                            whileHover={{ scale: 1.03 }}
+                        />
+
+                        {/* Subtle floating animation wrapper */}
+                        <motion.div
+                            className="absolute inset-0 pointer-events-none"
+                            animate={{ y: [0, -8, 0] }}
+                            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+                        >
+                            {/* Decorative corner accents */}
+                            <div className="absolute top-[15%] left-[15%] w-8 h-8 border-t border-l border-accent-primary/20 rounded-tl-lg" />
+                            <div className="absolute top-[15%] right-[15%] w-8 h-8 border-t border-r border-accent-primary/20 rounded-tr-lg" />
+                            <div className="absolute bottom-[15%] left-[15%] w-8 h-8 border-b border-l border-accent-warm/20 rounded-bl-lg" />
+                            <div className="absolute bottom-[15%] right-[15%] w-8 h-8 border-b border-r border-accent-warm/20 rounded-br-lg" />
+                        </motion.div>
                     </motion.div>
                 </div>
 
